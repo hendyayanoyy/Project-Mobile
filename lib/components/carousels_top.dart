@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: depend_on_referenced_packages, avoid_unnecessary_containers
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 
 class CarouselsTop extends StatefulWidget {
   const CarouselsTop({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _CarouselsTopState extends State<CarouselsTop> {
         Container(
           color: Colors.blue,
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
-          child: Row(
+          child: const Row(
             children: [
               Text(
                 'Top Book of The Year',
@@ -45,7 +47,7 @@ class _CarouselsTopState extends State<CarouselsTop> {
             ],
           ),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         CarouselSlider(
           carouselController: _carouselController,
           options: CarouselOptions(
@@ -53,8 +55,8 @@ class _CarouselsTopState extends State<CarouselsTop> {
             enlargeCenterPage: true,
             autoPlay: true,
             aspectRatio: 16 / 9,
-            autoPlayInterval: Duration(seconds: 3),
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,
             pauseAutoPlayOnTouch: true,
             scrollDirection: Axis.horizontal,
@@ -77,7 +79,7 @@ class _CarouselsTopState extends State<CarouselsTop> {
                   ))
               .toList(),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.map((url) {
@@ -85,7 +87,7 @@ class _CarouselsTopState extends State<CarouselsTop> {
             return Container(
               width: 8.0,
               height: 8.0,
-              margin: EdgeInsets.symmetric(horizontal: 2.0),
+              margin: const EdgeInsets.symmetric(horizontal: 2.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _currentSlide == index ? Colors.blue : Colors.grey,

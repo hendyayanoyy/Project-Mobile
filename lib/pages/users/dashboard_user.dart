@@ -8,9 +8,9 @@ class DashboardUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEEEEEE),
+      backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
-        backgroundColor: Color(0xFFEEEEEE),
+        backgroundColor: const Color(0xFFEEEEEE),
         toolbarHeight: 70.0, // Mengatur tinggi AppBar
         title: Container(
           height: 40.0, // Mengatur tinggi TextField
@@ -18,7 +18,7 @@ class DashboardUser extends StatelessWidget {
             color: const Color.fromARGB(255, 26, 25, 25),
             borderRadius: BorderRadius.circular(25.0),
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               hintText: 'Search',
               hintStyle: TextStyle(color: Colors.white70),
@@ -37,7 +37,7 @@ class DashboardUser extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.menu,
               color: Colors.black,
             ),
@@ -45,11 +45,11 @@ class DashboardUser extends StatelessWidget {
               // Tambahkan logika untuk aksi menu di sini
             },
             iconSize: 30.0, // Mengurangi ukuran icon
-            padding: EdgeInsets.only(right: 10.0),
+            padding: const EdgeInsets.only(right: 10.0),
           ),
         ],
       ),
-      body: Column(
+      body: const Column(
         children: [
           // SizedBox(height: 5.0),
           CarouselsTop(),

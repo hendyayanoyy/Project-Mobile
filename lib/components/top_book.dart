@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: depend_on_referenced_packages, avoid_unnecessary_containers
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 
 class TopBook extends StatefulWidget {
   const TopBook({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class _TopBookState extends State<TopBook> {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
+          child: const Text(
             'Top Books',
             style: TextStyle(
               fontSize: 18.0,
@@ -32,7 +34,7 @@ class _TopBookState extends State<TopBook> {
             ),
           ),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         CarouselSlider(
           carouselController: _carouselController,
           options: CarouselOptions(
@@ -40,8 +42,8 @@ class _TopBookState extends State<TopBook> {
             enlargeCenterPage: true,
             autoPlay: false,
             aspectRatio: 16 / 9,
-            autoPlayInterval: Duration(seconds: 3),
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,
             pauseAutoPlayOnTouch: true,
             scrollDirection: Axis.horizontal,
@@ -75,7 +77,7 @@ class _TopBookState extends State<TopBook> {
                             ),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           top: 5.0,
                           right: 5.0,
                           child: Icon(

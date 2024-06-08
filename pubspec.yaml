@@ -22,13 +22,15 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/assets/logo-buku.png
-    - lib/assets/user.png
-    - lib/assets/admin.png
-    - lib/assets/images/logo-buku.png
+    - lib/assets/
+    - lib/assets/books/
+    # - lib/assets/logo-buku.png
+    # - lib/assets/user.png
+    # - lib/assets/admin.png
+    # - lib/assets/images/logobuku.png
     # - lib/assets/images/cover-utama.jpg
-    - lib/assets/images/cover-splash.png
-    - lib/assets/images/cover-auth.jpg
+    # - lib/assets/images/cover-splash.png
+    # - lib/assets/images/cover-auth.jpg
 
 fonts:
   - family: Gravitas One

@@ -1,8 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Dashboard(),
+    home: const Dashboard(),
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
@@ -88,7 +90,7 @@ Widget itemDashboard(
     BuildContext context, String title, IconData iconData, Color background) {
   return Container(
     height: 80,
-    padding: EdgeInsets.symmetric(vertical: 15),
+    padding: const EdgeInsets.symmetric(vertical: 15),
     margin: const EdgeInsets.symmetric(vertical: 10.0),
     decoration: BoxDecoration(
       color: Colors.white,
@@ -104,7 +106,7 @@ Widget itemDashboard(
     ),
     child: ListTile(
       leading: Container(
-        margin: EdgeInsets.symmetric(horizontal: 0.10, vertical: 0.25),
+        margin: const EdgeInsets.symmetric(horizontal: 0.10, vertical: 0.25),
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: background,
@@ -118,7 +120,7 @@ Widget itemDashboard(
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),

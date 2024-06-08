@@ -15,12 +15,12 @@ class SignUpPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'Sign Up',
                     style: TextStyle(
                       fontSize: 48.0,
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFFD65A31),
+                      color: Color(0xFFD65A31),
                       fontFamily: 'Gravitas One',
                     ),
                   ),
@@ -32,7 +32,7 @@ class SignUpPage extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Email',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: const TextStyle(color: Colors.white70),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.1),
                             border: OutlineInputBorder(
@@ -44,13 +44,13 @@ class SignUpPage extends StatelessWidget {
                               horizontal: 20.0,
                             ),
                           ),
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         const SizedBox(height: 20.0),
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Password',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: const TextStyle(color: Colors.white70),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.1),
                             border: OutlineInputBorder(
@@ -62,14 +62,14 @@ class SignUpPage extends StatelessWidget {
                               horizontal: 20.0,
                             ),
                           ),
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           obscureText: true,
                         ),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
                           onPressed: () {}, // Tambahkan logika onPressed Anda
                           style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFFD65A31),
+                            foregroundColor: const Color(0xFFD65A31),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 180.0,
                               vertical: 20.0,

@@ -1,9 +1,12 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, avoid_print
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:project_akhir/models/member.dart';
 import 'package:project_akhir/pages/admin/member_edit_page.dart';
 import 'package:project_akhir/pages/admin/member_tambah_page.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class MemberCrudPage extends StatefulWidget {
   @override
@@ -22,9 +25,14 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
   Future<void> _fetchMembers() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://localhost/project_akhir/lib/backends/get_member.php'));
+          // 'http://localhost/project_akhir/lib/backends/get_member.php'));
+          'http://project-hendi.test:8080/lib/backends/get_member.php'));
+          // 'http://10.0.2.2:8080/lib/backends/get_member.php'));
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
+
+        print('data: $data');
+
         setState(() {
           members = data.map((member) => Member.fromJson(member)).toList();
         });
@@ -42,9 +50,9 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Member'),
+        title: const Text('Manage Member'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -62,13 +70,13 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
               child: ListTile(
                 contentPadding: const EdgeInsets.all(16),
                 title: Text(member.name ?? 'Unknown',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(member.email ?? 'Unknown'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.edit, color: Colors.blue),
+                      icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () async {
                         final updatedMember = await Navigator.push(
                           context,
@@ -83,7 +91,7 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.delete, color: Colors.red),
+                      icon: const Icon(Icons.delete, color: Colors.red),
                       onPressed: () {
                         _showDeleteDialog(context, member);
                       },
@@ -100,14 +108,14 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
           final newMember = await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddMemberPage(),
+              builder: (context) => const AddMemberPage(),
             ),
           );
           if (newMember != null) {
             // Handle new member
           }
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -117,18 +125,18 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Delete Member'),
+          title: const Text('Delete Member'),
           content: Text(
               'Are you sure you want to delete ${member.name ?? 'Unknown'}?'), // Menggunakan operator null-aware
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Delete', style: TextStyle(color: Colors.red)),
+              child: const Text('Delete', style: TextStyle(color: Colors.red)),
               onPressed: () {
                 // _deleteMember(member.id);
                 Navigator.of(context).pop();
