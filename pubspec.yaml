@@ -1,0 +1,42 @@
+name: project_akhir
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  google_fonts: 6.2.0
+  font_awesome_flutter: ^10.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  carousel_slider: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/assets/logo-buku.png
+    - lib/assets/user.png
+    - lib/assets/admin.png
+    - lib/assets/images/logo-buku.png
+    # - lib/assets/images/cover-utama.jpg
+    - lib/assets/images/cover-splash.png
+    - lib/assets/images/cover-auth.jpg
+
+fonts:
+  - family: Gravitas One
+    fonts:
+      - asset: assets/fonts/GravitasOne-Regular.ttf
+  - family: Actor
+    fonts:
+      - asset: assets/fonts/Actor-Regular.ttf
+  - family: Gothic A1
+    fonts:
+      - asset: assets/fonts/GothicA1-Regular.ttf
