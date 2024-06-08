@@ -24,6 +24,16 @@ class Book {
         
         return $list_books;
     }
+
+    public function detailBook() {
+        $query = "SELECT * FROM books WHERE id = $this->id";
+
+        $detail_books = mysqli_query($GLOBALS['conn'], $query);
+        $detail_books = $detail_books->fetch_assoc(MYSQLI_ASSOC);
+        
+        return $detail_books;
+    }
+
     public function createBook() {
         // Implementasi logika menambahkan buku ke database
 
