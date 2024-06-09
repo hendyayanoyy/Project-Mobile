@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/components/carousels_top.dart';
+import 'package:project_akhir/components/new_book.dart';
 import 'package:project_akhir/components/top_book.dart';
 
 class DashboardUser extends StatelessWidget {
@@ -49,16 +50,22 @@ class DashboardUser extends StatelessWidget {
           ),
         ],
       ),
-      body: const Column(
-        children: [
-          // SizedBox(height: 5.0),
-          CarouselsTop(),
-          SizedBox(height: 20.0),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // SizedBox(height: 5.0),
+            CarouselsTop(),
+            SizedBox(height: 20.0),
 
-          TopBook(), // Panggil carousel dari file terpisah
-          // Tambahkan widget lain di bawah carousel jika diperlukan
-        ],
-      ),
+            TopBook(), // Panggil carousel dari file terpisah
+            NewBook(),
+            // Tambahkan widget lain di bawah carousel jika diperlukan
+          ],
+        ),
+      )
     );
   }
 }

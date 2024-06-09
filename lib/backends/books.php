@@ -25,6 +25,26 @@ class Book {
         return $list_books;
     }
 
+    public function topBooks() {
+        // Implementasi logika untuk mendapatkan buku teratas
+        $query = "SELECT * FROM books ORDER BY rating DESC LIMIT 6";
+
+        $top_books = mysqli_query($GLOBALS['conn'], $query);
+        $top_books = $top_books->fetch_all(MYSQLI_ASSOC);
+        
+        return $top_books;
+    }
+
+    public function newsBooks() {
+        // Implementasi logika untuk mendapatkan buku teratas
+        $query = "SELECT * FROM books ORDER BY id DESC LIMIT 6";
+
+        $news_books = mysqli_query($GLOBALS['conn'], $query);
+        $news_books = $news_books->fetch_all(MYSQLI_ASSOC);
+        
+        return $news_books;
+    }
+
     public function detailBook() {
         $query = "SELECT * FROM books WHERE id = $this->id";
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_akhir/pages/users/dashboard_user.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -67,9 +68,11 @@ class SignInPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
-                          onPressed: () {}, // Tambahkan logika onPressed Anda
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardUser()));
+                          }, // Tambahkan logika onPressed Anda
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: const Color(0xFFD65A31),
+                            backgroundColor: const Color(0xFFD65A31),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 180.0,
                               vertical: 20.0,

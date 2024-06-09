@@ -229,6 +229,110 @@ function getBooks() {
     return;
 }
 
+function topBooks() {
+    $books = $GLOBALS['books'];
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $list = $books->topBooks();
+
+        if(empty($list)) {
+            echo json_encode([
+                'data' => [],
+                'code' => 404,
+                'message' => 'Not found',
+            ]);
+
+            header('status: 404');
+
+            return;
+        }
+
+        echo json_encode([
+            'data' => array_map(function($book) {
+                $book['id'] = (int)$book['id'];
+                $book['rating'] = (double)$book['rating'];
+                $book['year'] = (int)$book['year'];
+
+                if($book['image']) {
+                    $book['image'] = 'lib/assets/books/'.$book['image'];
+                }
+
+                if($book['description']) {
+                    $book['description'] = substr($book['description'], 0, 200).'...';
+                }
+
+                return $book;
+            }, $list),
+            'code' => 200,
+            'message' => 'Success get data',
+        ]);
+
+        header('status: 200');
+
+        return;
+    }
+
+    echo json_encode([
+        'code' => 405,
+        'message' => 'Method not allowed',
+    ]);
+
+    header('status: 405');
+
+    return;
+}
+
+function newsBooks() {
+    $books = $GLOBALS['books'];
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $list = $books->newsBooks();
+
+        if(empty($list)) {
+            echo json_encode([
+                'data' => [],
+                'code' => 404,
+                'message' => 'Not found',
+            ]);
+
+            header('status: 404');
+
+            return;
+        }
+
+        echo json_encode([
+            'data' => array_map(function($book) {
+                $book['id'] = (int)$book['id'];
+                $book['rating'] = (double)$book['rating'];
+                $book['year'] = (int)$book['year'];
+
+                if($book['image']) {
+                    $book['image'] = 'lib/assets/books/'.$book['image'];
+                }
+
+                if($book['description']) {
+                    $book['description'] = substr($book['description'], 0, 200).'...';
+                }
+
+                return $book;
+            }, $list),
+            'code' => 200,
+            'message' => 'Success get data',
+        ]);
+
+        header('status: 200');
+
+        return;
+    }
+
+    echo json_encode([
+        'code' => 405,
+        'message' => 'Method not allowed',
+    ]);
+
+    header('status: 405');
+
+    return;
+}
+
 switch($_GET['action']) {
     case 'create':
         createBook();
@@ -241,6 +345,12 @@ switch($_GET['action']) {
         break;
     case 'read':
         getBooks();
+        break;
+    case 'top':
+        topBooks();
+        break;
+    case 'new':
+        newsBooks();
         break;
     default:
         echo json_encode([

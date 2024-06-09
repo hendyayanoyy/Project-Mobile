@@ -12,9 +12,9 @@ class CarouselsTop extends StatefulWidget {
 
 class _CarouselsTopState extends State<CarouselsTop> {
   final List<String> imgList = [
-    'lib/assets/images/book-1.jpg',
-    'lib/assets/images/book-2.jpg',
-    'lib/assets/images/book-3.jpg',
+    'lib/assets/book-1.jpg',
+    'lib/assets/book-2.jpg',
+    'lib/assets/book-3.jpg',
   ];
 
   final CarouselController _carouselController = CarouselController();

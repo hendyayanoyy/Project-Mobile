@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_akhir/pages/admin/admin_dashboard.dart';
-// import 'package:project_akhir/pages/admin/member_crud.dart';
+import 'package:project_akhir/pages/users/dashboard_user.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -23,8 +22,9 @@ class _MainAppState extends State<MainApp> {
     return const MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: AdminDashboard(),
-          // child: DashboardUser(),
+          // child: AdminDashboard(),
+          child: DashboardUser(),
+          // child: SplashScreen(),
           // child: MemberCrudPage(),
         ),
       ),
