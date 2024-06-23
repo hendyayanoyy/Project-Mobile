@@ -52,7 +52,7 @@ class AuthPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignInPage()),
+                                builder: (context) => SignInPage()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -103,7 +103,7 @@ class AuthPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const SignUpPage()),
+                          MaterialPageRoute(builder: (context) => SignUpPage()),
                         );
                       }, // Tambahkan logika onPressed Anda
                     ),

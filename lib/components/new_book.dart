@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_akhir/models/book.dart';
+import 'package:project_akhir/pages/users/books/detail_page.dart';
 
 class NewBook extends StatefulWidget {
   const NewBook({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _NewBookState extends State<NewBook> {
     try {
       final response = await http.get(Uri.parse(
           // 'http://localhost/project_akhir/lib/backends/route_books.php?action=new'));
-          'http://project-hendi.test:8080/lib/backends/route_books.php?action=new'));
+          'http://admin-book.test:8080/api/route_books.php?action=new'));
 
       if (response.statusCode == 200) {
         final responseBody = json.decode(response.body);
@@ -64,9 +65,16 @@ class _NewBookState extends State<NewBook> {
         const SizedBox(height: 10.0),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
+          child:  Row(
             children: books
-                .map((book) => Container(
+                .map((book) => 
+                  GestureDetector(
+                    onTap: (() => {
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => DetailPage(id: book.id))),
+                    }), 
+                    child: Container(
                       width: 148.0,
                       height: 180.0,
                       margin: const EdgeInsets.all(8),
@@ -74,7 +82,7 @@ class _NewBookState extends State<NewBook> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
                         image: DecorationImage(
-                          image: AssetImage(book.image),
+                          image: NetworkImage(book.image),
                           fit: BoxFit.fill,
                         )
                       ),
@@ -133,6 +141,7 @@ class _NewBookState extends State<NewBook> {
                         ),
                       ),
                   ),
+                  )
                 ).toList(),
           ),
         )

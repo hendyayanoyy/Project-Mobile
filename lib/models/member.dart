@@ -12,6 +12,10 @@ class Member {
   Member({required this.id, this.name, this.email});
 
   factory Member.fromJson(Map<String, dynamic> json) {
+    if (json['id'].runtimeType == String) {
+      json['id'] = int.parse(json['id']);
+    }
+
     return Member(
       id: json['id'],
       name: json['nama'],

@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:project_akhir/components/carousels_top.dart';
-import 'package:project_akhir/components/new_book.dart';
-import 'package:project_akhir/components/top_book.dart';
+import 'package:project_akhir/pages/users/screens/books.dart';
+import 'package:project_akhir/pages/users/screens/carts.dart';
+import 'package:project_akhir/pages/users/screens/home.dart';
+import 'package:project_akhir/pages/users/screens/profile.dart';
+import 'package:project_akhir/pages/users/screens/transactions.dart';
 
-class DashboardUser extends StatelessWidget {
+class DashboardUser extends StatefulWidget {
   const DashboardUser({Key? key}) : super(key: key);
+
+  @override
+  _DashboardUserState createState() => _DashboardUserState();
+}
+
+class _DashboardUserState extends State<DashboardUser> {
+
+  late int _selectedIndex = 0;
+
+  List<Widget> pageList = [
+    const Home(),
+    const Books(),
+    const Carts(),
+    const Transactions(),
+    const Profile()
+  ];
+
+  Future<void> _changePage (int index) async {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +60,7 @@ class DashboardUser extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Icon(
@@ -52,20 +77,43 @@ class DashboardUser extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // SizedBox(height: 5.0),
-            CarouselsTop(),
-            SizedBox(height: 20.0),
-
-            TopBook(), // Panggil carousel dari file terpisah
-            NewBook(),
-            // Tambahkan widget lain di bawah carousel jika diperlukan
-          ],
-        ),
-      )
+        child: pageList.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Color(0xFFFEFFEA),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Books',
+            backgroundColor: Color(0xFFFEFFEA), 
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+            backgroundColor: Color(0xFFFEFFEA),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt),
+            label: 'Transaction',
+            backgroundColor: Color(0xFFFEFFEA), 
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            backgroundColor: Color(0xFFFEFFEA),
+          ),
+        ],
+        selectedItemColor: Colors.amber,
+        unselectedItemColor: Colors.grey.shade600,
+        currentIndex: _selectedIndex,
+        onTap: (value) => {
+          _changePage(value)
+        },
+      ),
     );
   }
 }

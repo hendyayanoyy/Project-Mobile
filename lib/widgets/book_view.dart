@@ -53,7 +53,7 @@ class BookView extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.star,
-                  color: Colors.yellow,
+                  color: Colors.amber,
                   size: 15,
                 ),
                 Text(

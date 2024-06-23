@@ -13,6 +13,8 @@ dependencies:
   google_fonts: 6.2.0
   font_awesome_flutter: ^10.1.0
   file_picker: ^8.0.3
+  cookie_jar: ^4.0.8
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -25,21 +27,14 @@ flutter:
   assets:
     - lib/assets/
     - lib/assets/books/
-    # - lib/assets/logo-buku.png
-    # - lib/assets/user.png
-    # - lib/assets/admin.png
-    # - lib/assets/images/logobuku.png
-    # - lib/assets/images/cover-utama.jpg
-    # - lib/assets/images/cover-splash.png
-    # - lib/assets/images/cover-auth.jpg
 
 fonts:
-  - family: Gravitas One
+  - family: GravitasOne
     fonts:
-      - asset: assets/fonts/GravitasOne-Regular.ttf
+      - asset: lib/users/assets/fonts/GravitasOne-Regular.ttf
   - family: Actor
     fonts:
-      - asset: assets/fonts/Actor-Regular.ttf
-  - family: Gothic A1
+      - asset: lib/users/assets/fonts/Actor-Regular.ttf
+  - family: GothicA1
     fonts:
-      - asset: assets/fonts/GothicA1-Regular.ttf
+      - asset: lib/users/assets/fonts/GothicA1-Regular.ttf

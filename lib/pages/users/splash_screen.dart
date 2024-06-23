@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFD65A31),
                     fontFamily:
-                        'Gravitas One', // Gunakan font yang sudah diimpor
+                        'GravitasOne', // Gunakan font yang sudah diimpor
                   ),
                 ),
                 const SizedBox(height: 8.0),
@@ -49,7 +49,7 @@ class SplashScreen extends StatelessWidget {
                     backgroundColor: const Color(0xFFD65A31),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                   }, 
                   child: const Text(
                     'Sign In', 

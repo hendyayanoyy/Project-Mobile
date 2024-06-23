@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_akhir/models/book.dart';
+import 'package:project_akhir/pages/users/books/detail_page.dart';
 
 class TopBook extends StatefulWidget {
   const TopBook({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _TopBookState extends State<TopBook> {
     try {
       final response = await http.get(Uri.parse(
           // 'http://localhost/project_akhir/lib/backends/route_books.php?action=top'));
-          'http://project-hendi.test:8080/lib/backends/route_books.php?action=top'));
+          'http://admin-book.test:8080/api/route_books.php?action=top'));
 
       if (response.statusCode == 200) {
         final responseBody = json.decode(response.body);
@@ -75,7 +76,14 @@ class _TopBookState extends State<TopBook> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: books
-                .map((book) => Container(
+                .map((book) => 
+                  GestureDetector(
+                    onTap: (() => {
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => DetailPage(id: book.id))),
+                    }), 
+                    child: Container(
                       width: 148.0,
                       height: 180.0,
                       margin: const EdgeInsets.all(8),
@@ -83,7 +91,7 @@ class _TopBookState extends State<TopBook> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
                         image: DecorationImage(
-                          image: AssetImage(book.image),
+                          image: NetworkImage(book.image),
                           fit: BoxFit.fill,
                         )
                       ),
@@ -142,85 +150,10 @@ class _TopBookState extends State<TopBook> {
                         ),
                       ),
                   ),
+                  )
                 ).toList(),
           ),
         )
-        // ListView.builder(
-        //   shrinkWrap: true,
-        //   scrollDirection: Axis.horizontal,
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   itemCount: imgList.length,
-        //   itemBuilder: (BuildContext context, int index) {
-        //     return Container(
-        //       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        //       child: ClipRRect(
-        //         borderRadius: BorderRadius.circular(15.0),
-        //         child: Image.asset(
-        //           width: 80.0,
-        //           height: 80.0,
-        //           imgList[index],
-        //           fit: BoxFit.fill,
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // ),
-        // CarouselSlider(
-        //   carouselController: _carouselController,
-        //   options: CarouselOptions(
-        //     height: 250.0,
-        //     enlargeCenterPage: true,
-        //     autoPlay: false,
-        //     aspectRatio: 3 / 4,
-        //     autoPlayInterval: const Duration(seconds: 3),
-        //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        //     autoPlayCurve: Curves.fastOutSlowIn,
-        //     pauseAutoPlayOnTouch: true,
-        //     scrollDirection: Axis.horizontal,
-        //     enableInfiniteScroll: false,
-        //     onPageChanged: (index, reason) {
-        //       setState(() {
-        //         // _currentSlide = index;
-        //       });
-        //     },
-        //   ),
-        //   items: imgList
-        //       .map((item) => Container(
-        //             // padding: EdgeInsets.symmetric(horizontal: 4.0),
-        //             child: Stack(
-        //               children: [
-        //                 Center(
-        //                   child: ClipRRect(
-        //                     borderRadius: BorderRadius.circular(15.0),
-        //                     child: DecoratedBox(
-        //                       decoration: BoxDecoration(
-        //                         border: Border.all(
-        //                           color: Colors.grey, // Warna border
-        //                           width: 1.0, // Ketebalan border
-        //                         ),
-        //                       ),
-        //                       child: Image.network(
-        //                         item,
-        //                         fit: BoxFit.cover,
-        //                         height: 250.0,
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //                 const Positioned(
-        //                   top: 5.0,
-        //                   right: 5.0,
-        //                   child: Icon(
-        //                     Icons.bookmark,
-        //                     color: Colors.blue,
-        //                     size: 18.0,
-        //                   ),
-        //                 ),
-        //               ],
-        //             ),
-        //           ))
-        //       .toList(),
-        // ),
       ],
     );
   }
