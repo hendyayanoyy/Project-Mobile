@@ -1,7 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:project_akhir/models/banks.dart';
 import 'package:project_akhir/models/member.dart';
-import 'package:project_akhir/models/transaction.dart';
 
 class Payment {
   final int? id;
@@ -11,7 +10,6 @@ class Payment {
   final Banks? bank;
   final String? numberVirtual;
   final int? transactionId;
-  final Transactions? transaction;
   final String? status;
   final int? memberId;
   final Member? member;
@@ -24,7 +22,6 @@ class Payment {
     this.bank,
     this.numberVirtual,
     this.transactionId,
-    this.transaction,
     this.status,
     this.memberId,
     this.member
@@ -39,7 +36,6 @@ class Payment {
       bank: json['bank'] != null ? Banks.fromJson(json['bank']) : null,
       numberVirtual: json['number_virtual'],
       transactionId: json['transaction_id'],
-      transaction: json['transaction'] != null ? Transactions.fromJson(json['transaction']) : null,
       status: json['status'],
       memberId: json['member_id'],
       member: json['member'] != null ? Member.fromJson(json['member']) : null

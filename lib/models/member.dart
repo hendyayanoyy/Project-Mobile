@@ -25,8 +25,9 @@ class Member {
 
   // Metode untuk melakukan update data anggota
   static Future<void> updateMember(
-      int id, String newName, String newEmail) async {
+      int id, String newName, String newEmail, String? password) async {
     final String url =
+        // 'http://localhost/project_akhir/lib/backends/update_member.php';
         'http://localhost/project_akhir/lib/backends/update_member.php';
     final response = await http.post(
       Uri.parse(url),
@@ -34,6 +35,7 @@ class Member {
         'id': id.toString(),
         'name': newName,
         'email': newEmail,
+        'password': password
       },
     );
     if (response.statusCode == 200) {

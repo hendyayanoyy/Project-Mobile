@@ -66,6 +66,7 @@ class _ListTransactionsState extends State<ListTransactions> {
               (transaction) => GestureDetector(
                 onTap: () {},
                 child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -117,8 +118,8 @@ class _ListTransactionsState extends State<ListTransactions> {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTransactionPage(id: transaction.id!)));
                         },
                         icon: const Icon(
-                          Icons.arrow_left,
-                          color: Color(0xFFD65A31), 
+                          Icons.chevron_left,
+                          color: Color(0xFFD65A31),
                           size: 2.4,
                         ),
                       ),
