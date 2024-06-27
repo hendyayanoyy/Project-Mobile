@@ -16,12 +16,11 @@ class Cart {
   final Member? member;
   final int book_id;
   final Book? book;
+  late int quantity = 1;
 
   Cart({this.id, required this.member_id, required this.book_id, this.member, this.book});
 
   factory Cart.fromJson(Map<String, dynamic> json) {
-    print(json);
-
     return Cart(
       id: json['id'],
       member_id: json['member']['id'],
@@ -60,7 +59,7 @@ class Cart {
 
     final response = await http.get(
       Uri.parse(
-        'http://admin-book.test:8080/api/route_carts.php?action=list&member_id=' + id.toString()
+        'http://admin-book.test:8080/api/route_carts.php?action=list&member_id=$id'
       ),
     );
 
@@ -70,7 +69,6 @@ class Cart {
         (json) {
           return Cart.fromJson(json);
         }).toList();
-      print(carts);
       return carts;
     } else {
       throw Exception('Failed to load carts');

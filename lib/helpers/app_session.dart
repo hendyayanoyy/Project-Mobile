@@ -41,4 +41,11 @@ class AppSession {
 
     return member;
   }
+
+  static Future<bool?> removeUserSession() async {
+    final pref = await SharedPreferences.getInstance();
+    bool success = await pref.remove("user");
+    pref.remove('token');
+    return success;
+  }
 }

@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'dart:convert';
 
@@ -37,7 +37,7 @@ class SignInPage extends StatelessWidget {
         ScaffoldMessenger.of(_context).showSnackBar(
           const SnackBar(content: Text('Login successful!'))
         );
-        Navigator.push(_context, MaterialPageRoute(builder: (context) => DashboardUser()));
+        Navigator.push(_context, MaterialPageRoute(builder: (context) => const DashboardUser()));
       } else {
         ScaffoldMessenger.of(_context).showSnackBar(
           SnackBar(content: Text('Login failed: ${response.reasonPhrase}'))

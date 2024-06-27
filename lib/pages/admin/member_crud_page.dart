@@ -30,9 +30,6 @@ class _MemberCrudPageState extends State<MemberCrudPage> {
           // 'http://10.0.2.2:8080/lib/backends/get_member.php'));
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-
-        print('data: $data');
-
         setState(() {
           members = data.map((member) => Member.fromJson(member)).toList();
         });
