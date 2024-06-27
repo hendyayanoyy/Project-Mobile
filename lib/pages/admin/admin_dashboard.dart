@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/components/footer.dart';
+import 'package:project_akhir/pages/admin/list_book.dart';
 // import 'package:project_akhir/pages/admin/add_book.dart';
 import 'package:project_akhir/pages/admin/member_crud_page.dart';
+import 'package:project_akhir/widgets/book_view.dart';
 // import 'package:project_akhir/components/menu-tile.dart';
 
 class AdminDashboard extends StatefulWidget {
@@ -19,9 +21,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
       body: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.grey,
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(50),
               ),
             ),
@@ -120,9 +122,83 @@ class _AdminDashboardState extends State<AdminDashboard> {
               ],
             ),
           ),
+          Container(
+            padding: const EdgeInsets.all(18),
+            child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        "List Books", 
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      const Spacer(),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ListBook()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                        ), 
+                        child: const Text(
+                          "View All",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                        ),
+                      )
+                    ]
+                  ),
+                  const SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        BookView(
+                          bookTitle: "Pride and Prejudice", 
+                          bookAuthor: "Jane Austen", 
+                          bookImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+                          bookDescription: "book mindself",
+                          bookRating: 3.5,
+                        ),
+                        BookView(
+                          bookTitle: "Pride and Prejudice", 
+                          bookAuthor: "Jane Austen", 
+                          bookImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+                          bookDescription: "book mindself",
+                          bookRating: 3.5,
+                        ),
+                        BookView(
+                          bookTitle: "Pride and Prejudice", 
+                          bookAuthor: "Jane Austen", 
+                          bookImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+                          bookDescription: "book mindself",
+                          bookRating: 3.5,
+                        ),
+                        BookView(
+                          bookTitle: "Pride and Prejudice", 
+                          bookAuthor: "Jane Austen", 
+                          bookImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+                          bookDescription: "book mindself",
+                          bookRating: 3.5,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
           // Footer
-          Footer(backgroundColor: Colors.grey),
+          const Footer(backgroundColor: Colors.grey),
         ],
       ),
     );

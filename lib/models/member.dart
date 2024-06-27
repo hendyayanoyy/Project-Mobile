@@ -1,5 +1,8 @@
-import 'package:http/http.dart' as http;
+// ignore_for_file: prefer_const_declarations, avoid_print
+
 import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 
 class Member {
   final int id;
@@ -9,6 +12,10 @@ class Member {
   Member({required this.id, this.name, this.email});
 
   factory Member.fromJson(Map<String, dynamic> json) {
+    if (json['id'].runtimeType == String) {
+      json['id'] = int.parse(json['id']);
+    }
+
     return Member(
       id: json['id'],
       name: json['nama'],

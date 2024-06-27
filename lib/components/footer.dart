@@ -14,8 +14,8 @@ class Footer extends StatelessWidget {
           // topRight: Radius.circular(50),
         ),
       ),
-      padding: EdgeInsets.all(20.0),
-      child: Row(
+      padding: const EdgeInsets.all(20.0),
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(

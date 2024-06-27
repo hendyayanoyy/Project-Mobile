@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -27,7 +29,9 @@ class _AddMemberPageState extends State<AddMemberPage> {
       _formKey.currentState!.save();
 
       try {
-        var url = Uri.parse('http://localhost/add_member.php');
+        // var url = Uri.parse('http://localhost/add_member.php');
+        // var url = Uri.parse('http://10.0.2.2:8080/lib/backends/add_member.php');
+        var url = Uri.parse('http://project-hendi.test:8080/lib/backends/add_member.php');
         var response = await http.post(url, body: {
           'name': _name,
           'email': _email,
@@ -35,7 +39,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
 
         if (response.statusCode == 200) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Member added successfully!')),
+            const SnackBar(content: Text('Member added successfully!')),
           );
           Navigator.pop(context, true);
         } else {
@@ -47,7 +51,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
         }
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: Could not reach the server')),
+          const SnackBar(content: Text('Error: Could not reach the server')),
         );
       }
     }
@@ -57,7 +61,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Member'),
+        title: const Text('Add Member'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -68,7 +72,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Name',
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -88,13 +92,13 @@ class _AddMemberPageState extends State<AddMemberPage> {
                   _name = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 136, 100, 100),
+                      color: Color.fromARGB(255, 136, 100, 100),
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -116,11 +120,11 @@ class _AddMemberPageState extends State<AddMemberPage> {
                   _email = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
                 style: ElevatedButton.styleFrom(
-                  primary: widget.buttonColor,
+                  foregroundColor: widget.buttonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                   ),

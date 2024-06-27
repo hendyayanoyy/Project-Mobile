@@ -1,6 +1,8 @@
+// ignore_for_file: library_private_types_in_public_api, avoid_print, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:project_akhir/models/member.dart';
 import 'package:http/http.dart' as http;
+import 'package:project_akhir/models/member.dart';
 
 class MemberEditPage extends StatefulWidget {
   final Member member;
@@ -36,9 +38,9 @@ class _MemberEditPageState extends State<MemberEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Member'),
+        title: const Text('Edit Member'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -54,7 +56,7 @@ class _MemberEditPageState extends State<MemberEditPage> {
                 initialValue: _name,
                 decoration: InputDecoration(
                   labelText: 'Name',
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -75,15 +77,15 @@ class _MemberEditPageState extends State<MemberEditPage> {
                 },
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               TextFormField(
                 initialValue: _email,
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 136, 100, 100)),
+                        color: Color.fromARGB(255, 136, 100, 100)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.shade400),
@@ -104,7 +106,7 @@ class _MemberEditPageState extends State<MemberEditPage> {
                   _email = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Button Save
               ElevatedButton(
@@ -116,7 +118,7 @@ class _MemberEditPageState extends State<MemberEditPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: widget.buttonColor,
+                  foregroundColor: widget.buttonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                   ),
@@ -152,7 +154,9 @@ class _MemberEditPageState extends State<MemberEditPage> {
     try {
       final response = await http.post(
         Uri.parse(
-            'http://localhost/project_akhir/lib/backends/update_member.php'),
+            // 'http://localhost/project_akhir/lib/backends/update_member.php'),
+            // 'http://10.0.2.2:8080/lib/backebds/update_member.php'),
+            'http://project-hendi.test:8080/lib/backebds/update_member.php'),
         body: {
           'id': id.toString(),
           'name': name,

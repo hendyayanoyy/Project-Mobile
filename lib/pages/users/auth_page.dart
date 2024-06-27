@@ -1,5 +1,8 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'sign_in.dart';
 import 'sign_up.dart';
 
@@ -21,17 +24,17 @@ class AuthPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'VynBookstore',
                   style: TextStyle(
                     fontSize: 48.0,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFFD65A31),
+                    color: Color(0xFFD65A31),
                     fontFamily: 'Gravitas One',
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Text(
+                const Text(
                   'books from whole world !',
                   style: TextStyle(
                     fontSize: 16.0,
@@ -53,7 +56,7 @@ class AuthPage extends StatelessWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFFD65A31),
+                          foregroundColor: const Color(0xFFD65A31),
                           padding:
                               const EdgeInsets.symmetric(horizontal: 100.0),
                           shape: RoundedRectangleBorder(
@@ -72,7 +75,7 @@ class AuthPage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {}, // Tambahkan logika onPressed Anda
                         style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFF222831),
+                          foregroundColor: const Color(0xFF222831),
                           padding:
                               const EdgeInsets.symmetric(horizontal: 100.0),
                           shape: RoundedRectangleBorder(

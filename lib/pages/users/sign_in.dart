@@ -1,8 +1,53 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:project_akhir/helpers/app_session.dart';
+import 'package:project_akhir/pages/users/dashboard_user.dart';
+import 'package:project_akhir/pages/users/sign_up.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+  SignInPage({Key? key}) : super(key: key);
+
+  late String _email;
+  late String _password;
+
+  late BuildContext _context;
+
+  Future<void> _signIn() async {
+    try {
+      final response = await http.post(
+        Uri.parse(
+          'http://admin-book.test:8080/api/route_auth.php?action=login'
+        ),
+        body: {
+          'email': _email,
+          'password': _password
+        }
+      );
+
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        AppSession.setBearerToken(data['data']['access_token']);
+        AppSession.setUserSession(data['data']['user']);
+
+        ScaffoldMessenger.of(_context).showSnackBar(
+          const SnackBar(content: Text('Login successful!'))
+        );
+        Navigator.push(_context, MaterialPageRoute(builder: (context) => const DashboardUser()));
+      } else {
+        ScaffoldMessenger.of(_context).showSnackBar(
+          SnackBar(content: Text('Login failed: ${response.reasonPhrase}'))
+        );
+      }
+
+    } catch(e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +60,13 @@ class SignInPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'Sign In',
                     style: TextStyle(
                       fontSize: 48.0,
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFFD65A31),
-                      fontFamily: 'Gravitas One',
+                      color: Color(0xFFD65A31),
+                      fontFamily: 'GravitasOne',
                     ),
                   ),
                   const SizedBox(height: 40.0),
@@ -32,7 +77,7 @@ class SignInPage extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Email',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: const TextStyle(color: Colors.white70),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.1),
                             border: OutlineInputBorder(
@@ -44,13 +89,14 @@ class SignInPage extends StatelessWidget {
                               horizontal: 20.0,
                             ),
                           ),
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
+                          onChanged: (value) => _email = value,
                         ),
                         const SizedBox(height: 20.0),
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Password',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: const TextStyle(color: Colors.white70),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.1),
                             border: OutlineInputBorder(
@@ -62,14 +108,18 @@ class SignInPage extends StatelessWidget {
                               horizontal: 20.0,
                             ),
                           ),
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
+                          onChanged: (value) => _password = value,
                           obscureText: true,
                         ),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
-                          onPressed: () {}, // Tambahkan logika onPressed Anda
+                          onPressed: () {
+                            _context = context;
+                            _signIn();
+                          }, // Tambahkan logika onPressed Anda
                           style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFFD65A31),
+                            backgroundColor: const Color(0xFFD65A31),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 180.0,
                               vertical: 20.0,
@@ -84,6 +134,16 @@ class SignInPage extends StatelessWidget {
                               color: Colors.white,
                               fontSize: 16.0,
                             ),
+                          ),
+                        ),
+                        const SizedBox(height: 20.0),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                          }, // Tambahkan logika onPressed Anda
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(color: Color(0xFFD65A31)),
                           ),
                         ),
                         const SizedBox(height: 20.0),
@@ -126,7 +186,7 @@ class SignInPage extends StatelessWidget {
 }
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: SignInPage(),
   ));
