@@ -22,7 +22,7 @@ class TransactionDetail {
       id: json['id'],
       transactionId: json['transaction_id'],
       bookId: json['book_id'],
-      book: Book.fromJson(json['book']),
+      book: json['book'] != null ? Book.fromJson(json['book']) : null,
       price: json['price'],
       quantity: json['quantity'],
     );
@@ -33,7 +33,7 @@ class TransactionDetail {
       id: json['id'],
       transactionId: json['transaction_id'],
       bookId: json['book_id'],
-      book: Book.fromJson(json['book']),
+      book: json['book'] != null ? Book.fromJson(json['book']) : null,
       price: json['price'],
       quantity: json['quantity'],
     );

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/models/cart.dart';
 import 'package:project_akhir/models/transaction.dart';
-import 'package:project_akhir/pages/users/screens/transactions.dart' as PageTransaction;
+import 'package:project_akhir/pages/users/dashboard_user.dart';
 
 class ListCarts extends StatefulWidget {
   const ListCarts({Key? key}) : super(key: key);
@@ -83,7 +83,7 @@ class _ListCartsState extends State<ListCarts> {
       if (transaction == true) {
         Navigator.push(
           _context,
-          MaterialPageRoute(builder: (context) => const PageTransaction.Transactions()),
+          MaterialPageRoute(builder: (context) => const DashboardUser()),
         );
       }
     } catch(e) {

@@ -12,9 +12,9 @@ class Transactions {
   final double? total;
   final String? status;
   final int? memberId;
-  final Member? member;
-  final List<TransactionDetail>? detail;
-  final Payment? payment;
+  late Member? member;
+  late List<TransactionDetail>? detail;
+  late Payment? payment;
 
   Transactions({
     this.memberId,
@@ -28,6 +28,7 @@ class Transactions {
   });
 
   factory Transactions.fromJson(Map<String, dynamic> json) {
+
     return Transactions(
       id: json['id'],
       codeTransaction: json['code_transaction'],

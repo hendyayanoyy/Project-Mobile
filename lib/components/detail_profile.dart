@@ -12,7 +12,7 @@ class DetailProfile extends StatefulWidget {
 class _DetailProfileState extends State<DetailProfile> {
 
   bool _isLoading = true;
-  Member? member;
+  late Member? member;
 
   late String? name;
   late String? email;
@@ -32,6 +32,7 @@ class _DetailProfileState extends State<DetailProfile> {
         _isLoading = false;
         name = member.name;
         email = member.email;
+        member = member;
       });
     } catch(e) {
       print(e);
@@ -41,7 +42,7 @@ class _DetailProfileState extends State<DetailProfile> {
 
   Future<void> _updateProfile() async {
     try {
-      Member.updateMember(member!.id, name!, email!);
+      Member.updateMember(member!.id, name!, email!, password);
       _getProfile();
     } catch(e) {
       print(e);
