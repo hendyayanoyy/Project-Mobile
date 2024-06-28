@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/helpers/app_session.dart';
 import 'package:project_akhir/models/member.dart';
+import 'package:project_akhir/pages/users/sign_in.dart';
 
 class DetailProfile extends StatefulWidget {
   const DetailProfile({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _DetailProfileState extends State<DetailProfile> {
   Future <void> _logout() async {
     try {
       AppSession.removeUserSession();
-      Navigator.pop(context);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignInPage()), (route) => false);
     } catch(e) {
       print(e);
     }
